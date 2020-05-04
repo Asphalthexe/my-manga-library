@@ -32,11 +32,11 @@ app.use(cookieParser());
 
 // Express View engine setup
 
-app.use(require('node-sass-middleware')({
+/* app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true
-}));
+})); */
       
 
 app.set('views', path.join(__dirname, 'views'));
@@ -50,7 +50,35 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
+// API Google Books
+const GoogleBooksApi = new GoogleBooksApi({
+  key: process.env.API_KEY,
+});
 
+// Retrieve an access token
+googleBooksApi
+  .clientCredentialsGrant()
+  .then(data => googleBooksApi.setAccessToken(data.body['access_token']))
+  .catch(error => console.log('Something went wrong when retrieving an access token', error));
+
+  
+//API Goodreads
+const GoodreadsApi = require('');
+
+// setting of the goodreads-api
+const goodreadsApi = new GoodreadsApi({
+  clientKey: process.env.GOODREADS_CLIENT_KEY,
+  clientSecret: process.env.GOODREADS_CLIENT_SECRET
+});
+
+// Retrieve an access token
+goodreadsApi
+  .clientCredentialsGrant()
+  .then(data => goodreadsApi.setAccessToken(data.body['access_token']))
+  .catch(error => console.log('Something went wrong when retrieving an access token', error));
+
+
+// routes
 const index = require('./routes/index');
 app.use('/', index);
 
