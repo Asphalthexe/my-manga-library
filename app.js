@@ -84,14 +84,14 @@ var request = require("request");
 var options = {
   method: 'POST',
   url: 'https://localhost:3000/api/v2/connections',
-  headers: {authorization: 'Bearer YOUR_API_V2_TOKEN_HERE'},
+  headers: {authorization: 'Bearer YOUR_API_V2_TOKEN_HERE'}, //?
   body: {
     name: 'custom-goodreads',
     strategy: 'oauth1',
-    enabled_clients: ['YOUR_ENABLED_CLIENT_ID'],
+    enabled_clients: ['YOUR_ENABLED_CLIENT_ID'], //where to get?
     options: {
-      client_id: 'YOUR_GOODREADS_KEY',
-      client_secret: 'YOUR_GOODREADS_SECRET',
+      client_id: 'YOUR_GOODREADS_KEY', //in env
+      client_secret: 'YOUR_GOODREADS_SECRET', // in env
       requestTokenURL: 'http://www.goodreads.com/oauth/request_token',
       accessTokenURL: 'http://www.goodreads.com/oauth/access_token',
       userAuthorizationURL: 'http://www.goodreads.com/oauth/authorize',
