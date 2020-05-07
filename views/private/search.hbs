@@ -1,0 +1,10 @@
+<h1>Hello this is search </h1>
+
+<form action="/search" method="get">
+  <input type="text" name="search">
+  <button type="submit">Search</button>
+</form>
+
+{{#each data}}
+ <p>{{this.volumeInfo.title}}</p>
+ {{/each}} 

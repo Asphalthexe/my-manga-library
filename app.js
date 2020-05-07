@@ -50,19 +50,16 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
-// API Google Books
-const GoogleBooksApi = new GoogleBooksApi({
-  key: process.env.API_KEY,
-});
 
-// Retrieve an access token
-googleBooksApi
-  .clientCredentialsGrant()
-  .then(data => googleBooksApi.setAccessToken(data.body['access_token']))
-  .catch(error => console.log('Something went wrong when retrieving an access token', error));
+
+// API Google Books
+//https://www.googleapis.com/books/v1/volumes?q=flowers&orderBy=newest&key=yourAPIKey //The following example lists results by published date, newest to oldest:
+
+
+
 
   
-//API Goodreads
+/* //API Goodreads
 const GoodreadsApi = require('');
 
 // setting of the goodreads-api
@@ -109,11 +106,14 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-
+ */
 
 // routes
 const index = require('./routes/index');
 app.use('/', index);
+
+const search = require('./routes/search');
+app.use('/search', search);
 
 
 module.exports = app;
