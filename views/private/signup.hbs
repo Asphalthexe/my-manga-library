@@ -1,0 +1,21 @@
+
+<h2>Registriere dich ...</h2>
+<p>... und behalte den Überblick über deine Manga Bibliothek zu Hause auch unterwegs, z. B. auf Messen!</p>
+
+<form action="/auth/signup" method="POST" id="form-container">
+  <label for="email">Deine Email</label>
+  <input id="email" type="text" name="email" placeholder="email@my-manga-library.de">
+  <br><br>
+  <label for="password">Wähle ein Passwort</label>
+  <input id="password" type="password" name="password" placeholder="Dein Passwort">
+
+  <br><br>
+
+  <button type="submit">Erstelle Account</button>
+
+  <p class="account-message">
+    Du hast schon einen Account?<br>
+    Hier geht es zum
+    <a href="/auth/login">Login</a>
+  </p>
+</form>

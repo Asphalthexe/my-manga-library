@@ -1,0 +1,26 @@
+<h2> Bitte logge dich ein, um deine Bibliothek zu verwalten</h2>
+
+{{#each errorArr}}
+<p style="color: red;">{{this}}</p>
+{{/each}}
+
+<form action="/auth/login" method="POST" id="form-container">
+  <label for="email"> Deine Email</label>
+  <input id="email" type="text" name="username" placeholder="email@my-manga-library.de">
+  <br><br>
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password" placeholder="Dein Passwort">
+
+  <br><br>
+
+  <button type="submit">Login</button>
+
+  <p class="account-message">
+    Noch nicht registriert?
+    <a href="/auth/signup">Registriere dich hier!</a>
+  </p>
+</form>
+{{!-- <p>
+Du hast einen SLACK Account?
+<a href="/slack">Log dich ein mit SLACK</a>
+</p> --}}
