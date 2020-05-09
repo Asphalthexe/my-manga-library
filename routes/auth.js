@@ -120,6 +120,20 @@ router.post('/auth/login', passport.authenticate('local', {
   // passReqToCallback: true
 }))
 
+//////// SLACK login
+
+router.get("/auth/slack", passport.authenticate("slack"));
+router.get(
+  "/auth/slack/callback",
+  passport.authenticate("slack", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login" // here you would navigate to the classic login page
+  })
+);
+
+//////// SLACK login END
+
+
 
 router.get('/auth/logout', (req, res) => {
   req.logout() // this one deletes the user from the session

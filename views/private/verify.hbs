@@ -1,8 +1,10 @@
 <h2>Bestätige deine E-Mail</h2>
+<p>Gib hier deinen 4-stelligen Code ein, den du von uns an deine eingegebene Emailadresse erhalten hast.<br>
+ <br>
+  Bitte schau auch in deinem Spam Ordner nach.</p>
 
-<form action="/verify-email" method="POST" id="form-container">
-  <label for="token">Biite gib hier den Code ein, den du per Email erhalten hast. <br>
-  Bitte schau auch in deinem Spam Ordner nach.</label>
+<form action="/auth/verify-email" method="POST" id="form-container">
+  <label for="token">Bite gib hier den Code ein, den du per Email erhalten hast.</label>
   <input id="token" type="number" name="token">
 
   <button type="submit">Bestätige deine Eingabe</button>
