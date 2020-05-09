@@ -1,0 +1,10 @@
+<h1> Hallo {{this.owner}} </h1>
+
+<form action="/search" method="get">
+  <input type="text" name="search">
+  <button type="submit">Suche</button>
+</form>
+
+{{#each books}}
+ <p>{{this.title}} // {{this.authors.[0,1]}} // {{this.imageLinks}} </p>
+ {{/each}} 

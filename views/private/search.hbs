@@ -1,10 +1,25 @@
-<h1>Hello this is search </h1>
+<h1>Suche deinen Titel </h1>
 
 <form action="/search" method="get">
   <input type="text" name="search">
-  <button type="submit">Search</button>
+  <button type="submit">Suche</button>
 </form>
 
 {{#each data}}
- <p>{{this.volumeInfo.title}}</p>
- {{/each}} 
+
+
+
+<form action="/search" method="post">
+  <input type="text" name="pageCount" value="{{this.volumeInfo.imageLinks}}">
+  <input type="text" name="title" value="{{this.volumeInfo.title}}">
+  <input type="text" name="authors" value="{{this.volumeInfo.authors.[]}}">
+  <input type="text" name="publisher" value="{{this.volumeInfo.publisher}}">  
+  <input type="text" name="publisherDate" value="{{this.volumeInfo.publisherDate}}">
+  <input type="text" name="pageCount" value="{{this.volumeInfo.pageCount}}">  
+  <input type="text" name="pageCount" value="{{this.volumeInfo.pageCount}}">
+  <input type="text" name="description" value="{{this.volumeInfo.description}}">
+ {{!--  <p name="title">{{this.volumeInfo.title}}</p> --}}
+  <button type="submit">Save me</button>
+</form>
+
+{{/each}}

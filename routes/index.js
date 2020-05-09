@@ -10,6 +10,8 @@ const axios = require('axios')
 /* GET home page */
 router.get('/', (req, res) => {
 
+  console.log(req.user)
+
   // req.user // passport makes this available 
   res.render('index', {
     user: req.user
@@ -17,12 +19,6 @@ router.get('/', (req, res) => {
 
 });
 
-
-// here user needs to be logged in
-router.get('/books', loggedInUser, (req, res) => {
-
-  res.send('here be books')
-});
 
 
 module.exports = router;

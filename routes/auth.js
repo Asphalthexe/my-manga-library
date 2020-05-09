@@ -4,8 +4,10 @@ const axios       = require('axios');
 
 const passport = require('passport')
 
-// User model
-const User = require('../models/user');
+// User models
+const User = require('./../models/user');
+/* const Book = require('../models/book');
+const Bookshelf = require('../models/bookshelf'); */
 
 // Bcrypt to encrypt passwords
 const bcrypt = require('bcrypt');
