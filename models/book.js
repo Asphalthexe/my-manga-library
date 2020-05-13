@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
-  imageLinks: Object,
+  imageLink: String,
   title: {
     type: String,
     required: true
@@ -12,9 +12,12 @@ const bookSchema = new Schema({
   authors: Array,
   publisher: String,
   publisherDate: String,
-  pageCount: String,
+  pageCount: Number,
+  categories: Array,
   //rating: String,
   description: String,
+  retailPrice: String,
+  ISBN: String,
   owner: {
     type:  Schema.Types.ObjectId,
     ref: 'User'

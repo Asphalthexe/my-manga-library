@@ -1,10 +1,31 @@
-<h1> Hallo {{this.owner}} </h1>
+<ul>
+  <li><a href="/search"> Suche ein Buch </a></li>
+  <li><a href="/userlibrary"> Mein Regal </a></li>
+</ul>
+
+<h1> Hallo {{req.user.id}}! Das ist dein Regal: </h1>
+
+
 
 <form action="/search" method="get">
   <input type="text" name="search">
   <button type="submit">Suche</button>
 </form>
 
+<div></div>
 {{#each books}}
- <p>{{this.title}} // {{this.authors.[0,1]}} // {{this.imageLinks}} </p>
- {{/each}} 
+
+<div> <img src="{{this.imageLink}}" alt="cover" srcset=""></div>
+<div>
+
+  <p>
+    <h4>{{this.title}}</h4><br>
+    Zeichner / Autor:{{#each this.authors}} {{this}} {{/each}} <br>
+    Verlag und Erscheinungsdatum: {{ this.publisher }}{{ this.publisherDate }} <br>
+    Seitenzahl: {{ this.pageCount }} Preis: {{ this.retailPrice }} ISBN: {{this.ISBN}}<br>
+  </p>
+  <p>Inhaltsbeschreibung: {{ this.description }}</p>
+</div>
+
+{{/each}}
+</div>

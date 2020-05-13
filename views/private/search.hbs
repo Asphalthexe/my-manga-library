@@ -1,25 +1,53 @@
-<h1>Suche deinen Titel </h1>
+<ul>
+  <li><a href="/search"> Suche ein Buch </a></li>
+  <li><a href="/userlibrary"> Mein Regal </a></li>
+</ul>
+
+<div>
+<h3>Suche nach einem Titel </h3>
 
 <form action="/search" method="get">
-  <input type="text" name="search">
-  <button type="submit">Suche</button>
+{{!-- Suche nach Titel: --}}  <input type="text" name="search"> <br>
+{{!-- Suche nach Autor / Zeichner:  <input type="text" name="searchauthor"> <br>
+Suche nach ISBN:   <input type="text" name="searchisbn"> --}}
+
+  <br>
+  <button type="submit">Suche</button> <br>
+  (Es werden maximal 40 Ergebnisse angezeigt)
 </form>
+</div>
+
+
 
 {{#each data}}
 
+<div id="searchresult">
+  <img src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="" srcset="">
+  <p>
+    <h4>{{this.volumeInfo.title}} </h4><br>
+    Zeichner / Autor: {{#each this.volumeInfo.authors}} {{this.authors}} {{/each}} <br>
+    Categories: {{#each this.volumeInfo.mainCategory}} {{this.categories}} {{/each}} <br>
+    ISBN: {{#each this.volumeInfo.industryIdentifiers.type}} {{this.industryIdentifiers}} {{/each}} <br>
+  </p>
 
+  <form action="/search" method="post">
+    <input hidden type="text" name="imageLink" value="{{this.volumeInfo.imageLinks.thumbnail}}">
+    <input hidden type="text" name="title" value="{{this.volumeInfo.title}}">
+    <input hidden type="text" name="authors" value="{{this.volumeInfo.authors}}">
+    <input hidden type="text" name="publisher" value="{{this.volumeInfo.publisher}}">
+    <input hidden type="text" name="publisherDate" value="{{this.volumeInfo.publisherDate}}">
+{{!--     <input hidden type="text" name="categories" value="{{this.volumeInfo.categories}}"> --}}
+    <input hidden type="text" name="categories" value="{{this.volumeInfo.mainCategory}}">
+    <input hidden type="text" name="ISBN" value="{{this.volumeInfo.industryIdentifiers.type}}">
+    <input hidden type="text" name="pageCount" value="{{this.volumeInfo.pageCount}}">
+    <input hidden type="text" name="retailPrice"
+      value="{{this.saleInfo.retailPrice.amount}}&{{this.saleInfo.retailPrice.currency}}">
+    <input hidden type="text" name="description" value="{{this.volumeInfo.description}}">
+    {{!--  <p name="title">{{this.volumeInfo.title}}</p> --}}
+    <button type="submit">Save me</button>
 
-<form action="/search" method="post">
-  <input type="text" name="pageCount" value="{{this.volumeInfo.imageLinks}}">
-  <input type="text" name="title" value="{{this.volumeInfo.title}}">
-  <input type="text" name="authors" value="{{this.volumeInfo.authors.[]}}">
-  <input type="text" name="publisher" value="{{this.volumeInfo.publisher}}">  
-  <input type="text" name="publisherDate" value="{{this.volumeInfo.publisherDate}}">
-  <input type="text" name="pageCount" value="{{this.volumeInfo.pageCount}}">  
-  <input type="text" name="pageCount" value="{{this.volumeInfo.pageCount}}">
-  <input type="text" name="description" value="{{this.volumeInfo.description}}">
- {{!--  <p name="title">{{this.volumeInfo.title}}</p> --}}
-  <button type="submit">Save me</button>
-</form>
+  </form>
+
+</div>
 
 {{/each}}

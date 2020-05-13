@@ -128,7 +128,7 @@ router.get("/auth/slack", passport.authenticate("slack"));
 router.get(
   "/auth/slack/callback",
   passport.authenticate("slack", {
-    successRedirect: "/",
+    successRedirect: "/userlibrary",
     failureRedirect: "/auth/login" // here you would navigate to the classic login page
   })
 );

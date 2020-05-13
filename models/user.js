@@ -15,10 +15,10 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   },
-  bookshelf: [{
+  /* bookshelf: [{
     type: Schema.Types.ObjectId,
     ref: 'Book'
-  }],
+  }], */
 
   token: String
 }, {

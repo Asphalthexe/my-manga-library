@@ -10,7 +10,7 @@ const axios = require('axios')
 /* GET home page */
 router.get('/', (req, res) => {
 
-  console.log(req.user)
+  //console.log(req.user)
 
   // req.user // passport makes this available 
   res.render('index', {
