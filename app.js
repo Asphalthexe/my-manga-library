@@ -23,7 +23,7 @@ const Bookshelf = require('./models/bookshelf');
 
 mongoose
 //next line has to be changed when deploy on heroku -> MONGODB_URI in env file + anstatt local URL + auf heroku alles was im env file ist eintragen und config vars
-  .connect.mongodb (process.env.MONGODB_URI , {
+  .connect (mongodb: process.env.MONGODB_URI , {
 //  .connect('mongodb://localhost/my-manga-library', {
     useNewUrlParser: true
   })
