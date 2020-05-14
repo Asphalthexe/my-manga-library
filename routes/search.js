@@ -58,6 +58,26 @@ oclc: Returns results where the text following this keyword is the Online Comput
 ////////////////////////////////////////////////////////
 
 
+////////////////////// AMAZON PRODUCT RAPID API ////////////////////////////////////////
+/* axios({
+  "method":"GET",
+  "url":"https://amazonproductpage.p.rapidapi.com/services/amazoncrawler/api/extended/amazon-scrapes/B07J5NMYWM",
+  "headers":{
+  "content-type":"application/octet-stream",
+  "x-rapidapi-host":"amazonproductpage.p.rapidapi.com",
+  "x-rapidapi-key":"08fd4aa579mshabcd67f7a591370p14990ejsn482620bae0f7",
+  "useQueryString":true
+  }
+  })
+  .then((response)=>{
+    console.log(response)
+  })
+  .catch((error)=>{
+    console.log(error)
+  }) */
+
+  /////////////////////////////////////////// END //////////////////////////////////////////
+
 // POST
 router.post('/', (req, res, next) => {
 

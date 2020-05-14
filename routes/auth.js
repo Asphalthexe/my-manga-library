@@ -49,8 +49,8 @@ router.post('/auth/signup', (req, res, next) => {
       from: '"Meine Manga Bibliothek" <mail@my-manga-library.de>',
       to: email,
       subject: 'Deine Registrierung bei "Meine Manga Bibliothek"',
-      text: `Bitte bestätige deine Emailadresse, in dem du auf dem Link klickst: http://localhost:3000/verify-email-link/${token}`,
-      html: `Bitte bestätige deine Emailadresse, in dem du auf dem Link klickst: http://localhost:3000/verify-email-link/${token}`
+      text: `Bitte bestätige deine Emailadresse, in dem du auf dem Link klickst: ${process.env.VERIFYEMAIL}${token}`,
+      html: `Bitte bestätige deine Emailadresse, in dem du auf dem Link klickst: ${process.env.VERIFYEMAIL}${token}`
       // aternatively, send the token itself for the user to type it
       // text: `Hey this is your token `${token}`,
       // html: `Hey this is your token `${token}`,
