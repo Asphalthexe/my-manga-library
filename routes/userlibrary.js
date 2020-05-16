@@ -22,5 +22,18 @@ router.get('/', loggedInUser, (req, res) => {
 
 
 
+// DELETE
+// POST /userlibrary/delete/:identifier
+router.post('/delete/:identifier', (req, res) => {
+
+  console.log(req.params.identifier)
+
+  Book.findByIdAndDelete(req.params.identifier).then(() => {
+    res.redirect('/userlibrary')
+  })
+
+})
+
+
 
 module.exports = router;

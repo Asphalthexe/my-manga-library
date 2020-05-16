@@ -46,9 +46,9 @@ router.post('/auth/signup', (req, res, next) => {
   const token = tokenArr.join(''); // "1458"
 
   transporter.sendMail({
-      from: '"Meine Manga Bibliothek" <mail@my-manga-library.de>',
+      from: '"Mein Manga Regal" <mail@my-manga-library.de>',
       to: email,
-      subject: 'Deine Registrierung bei "Meine Manga Bibliothek"',
+      subject: 'Deine Registrierung bei "Mein Manga Regal"',
       text: `Bitte bestätige deine Emailadresse, in dem du auf dem Link klickst: ${process.env.VERIFYEMAIL}${token}`,
       html: `Bitte bestätige deine Emailadresse, in dem du auf dem Link klickst: ${process.env.VERIFYEMAIL}${token}`
       // aternatively, send the token itself for the user to type it
@@ -117,29 +117,30 @@ router.get('/auth/login', (req, res) => {
 // use LocalStrategy for authentication
 router.post('/auth/login', passport.authenticate('local', {
   successRedirect: '/', // pick up the redirectBackTo parameter and after login redirect the user there. ( default / )
-  failureRedirect: '/private/login',
+  failureRedirect: '/auth/login',
   failureFlash: true,
   // passReqToCallback: true
 }))
 
-//////// SLACK login
+//////////////// SLACK login ////////////////////////////////
 
 router.get("/auth/slack", passport.authenticate("slack"));
 router.get(
   "/auth/slack/callback",
   passport.authenticate("slack", {
-    successRedirect: "/userlibrary",
-    failureRedirect: "/auth/login" // here you would navigate to the classic login page
+    successRedirect: "/userlibrary", // for deploy on heroku change the link on slack page to https://my-manga-library.herokuapp.com/auth/slack/callback
+    failureRedirect: "/auth/login" 
   })
 );
 
-//////// SLACK login END
+//////// SLACK login END ////////////////////////////////
 
 
-
+//////// LOGOUT /////////
 router.get('/auth/logout', (req, res) => {
   req.logout() // this one deletes the user from the session
   res.render('private/logout');
+  //.then(() => {res.redirect('/')}) //timeout?
 })
 
 

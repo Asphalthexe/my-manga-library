@@ -1,25 +1,21 @@
-<h2>Registriere dich ...</h2>
-<p>... und behalte den Überblick über deine Manga Bibliothek zu Hause auch unterwegs, z. B. auf Messen!</p>
+<h3>Registriere dich </h3>
+<p>... und behalte so den Überblick über dein Manga Regal zu Hause auch von unterwegs!</p>
 
 <form action="/auth/signup" method="POST" id="form-container">
-  <label for="email">Deine Email</label>
+  <label for="email">Deine Email</label><br>
   <input id="email" type="text" name="email" placeholder="email@my-manga-library.de">
-  <br><br>
-  <label for="password">Wähle ein Passwort</label>
+  <br>
+  <label for="password">Wähle ein Passwort</label><br>
   <input id="password" type="password" name="password" placeholder="Dein Passwort">
 
   <br><br>
 
-  <button type="submit">Erstelle Account</button>
+  <button type="submit" class="button1">Erstelle Account</button>
 </form>
 
-<p class="account-message">
-  Du hast schon einen Account?<br>
-  Hier geht es zum
-  <a href="/auth/login">Login</a>
-</p>
-
-<p>
+<p class="account-message" id="textlinks">
+  Du hast schon einen Account? Hier geht es zum <a href="/auth/login">Login</a>
+<br>
   Du hast einen SLACK Account?
   <a href="/auth/slack">Log dich ein mit SLACK</a>
 </p>

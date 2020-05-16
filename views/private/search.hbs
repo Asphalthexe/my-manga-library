@@ -1,52 +1,55 @@
-<ul>
+{{!-- <ul>
   <li><a href="/search"> Suche ein Buch </a></li>
   <li><a href="/userlibrary"> Mein Regal </a></li>
-</ul>
+</ul> --}}
 
-<div>
-<h3>Suche nach einem Titel </h3>
+<div id="searchdiv">
+  <h3>Suche nach einem Titel </h3>
 
-<form action="/search" method="get">
-{{!-- Suche nach Titel: --}}  <input type="text" name="search"> <br>
-{{!-- Suche nach Autor / Zeichner:  <input type="text" name="searchauthor"> <br>
+  <form action="/search" method="get">
+    {{!-- Suche nach Titel: --}} <input type="text" name="search" id="searchinput">
+    {{!-- Suche nach Autor / Zeichner:  <input type="text" name="searchauthor"> <br>
 Suche nach ISBN:   <input type="text" name="searchisbn"> --}}
 
-  <br>
-  <button type="submit">Suche</button> <br>
-  (Es werden maximal 40 Ergebnisse angezeigt)
-</form>
+    <button type="submit" class="button1">Suche</button> <br>
+    <div class="small"> (Es werden maximal 40 Ergebnisse angezeigt)</div>
+  </form>
 </div>
-
 
 
 {{#each data}}
 
-<div id="searchresult">
-  <img src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="" srcset="">
-  <p>
+<div id="book-container">
+  <div>
+    <img src="{{this.volumeInfo.imageLinks.thumbnail}}" alt="" srcset="">
+  </div>
+
+  <div>
     <h4>{{this.volumeInfo.title}} </h4><br>
     Zeichner / Autor: {{#each this.volumeInfo.authors}} {{this.authors}} {{/each}} <br>
     Categories: {{#each this.volumeInfo.mainCategory}} {{this.categories}} {{/each}} <br>
     ISBN: {{#each this.volumeInfo.industryIdentifiers.type}} {{this.industryIdentifiers}} {{/each}} <br>
-  </p>
 
-  <form action="/search" method="post">
-    <input hidden type="text" name="imageLink" value="{{this.volumeInfo.imageLinks.thumbnail}}">
-    <input hidden type="text" name="title" value="{{this.volumeInfo.title}}">
-    <input hidden type="text" name="authors" value="{{this.volumeInfo.authors}}">
-    <input hidden type="text" name="publisher" value="{{this.volumeInfo.publisher}}">
-    <input hidden type="text" name="publisherDate" value="{{this.volumeInfo.publisherDate}}">
-{{!--     <input hidden type="text" name="categories" value="{{this.volumeInfo.categories}}"> --}}
-    <input hidden type="text" name="categories" value="{{this.volumeInfo.mainCategory}}">
-    <input hidden type="text" name="ISBN" value="{{this.volumeInfo.industryIdentifiers.type}}">
-    <input hidden type="text" name="pageCount" value="{{this.volumeInfo.pageCount}}">
-    <input hidden type="text" name="retailPrice"
-      value="{{this.saleInfo.retailPrice.amount}}&{{this.saleInfo.retailPrice.currency}}">
-    <input hidden type="text" name="description" value="{{this.volumeInfo.description}}">
-    {{!--  <p name="title">{{this.volumeInfo.title}}</p> --}}
-    <button type="submit">Save me</button>
 
-  </form>
+    <form action="/search" method="post">
+      <input hidden type="text" name="imageLink" value="{{this.volumeInfo.imageLinks.thumbnail}}">
+      <input hidden type="text" name="title" value="{{this.volumeInfo.title}}">
+      <input hidden type="text" name="authors" value="{{this.volumeInfo.authors}}">
+      <input hidden type="text" name="publisher" value="{{this.volumeInfo.publisher}}">
+      <input hidden type="text" name="publisherDate" value="{{this.volumeInfo.publisherDate}}">
+      {{!--     <input hidden type="text" name="categories" value="{{this.volumeInfo.categories}}"> --}}
+      <input hidden type="text" name="categories" value="{{this.volumeInfo.mainCategory}}">
+      <input hidden type="text" name="ISBN" value="{{this.volumeInfo.industryIdentifiers.type}}">
+      <input hidden type="text" name="pageCount" value="{{this.volumeInfo.pageCount}}">
+      <input hidden type="text" name="retailPrice"
+        value="{{this.saleInfo.retailPrice.amount}}{{this.saleInfo.retailPrice.currency}}">
+      <input hidden type="text" name="description" value="{{this.volumeInfo.description}}">
+      {{!--  <p name="title">{{this.volumeInfo.title}}</p> --}}
+      <br><br>
+      <button type="submit" class="button2">In mein Regal</button>
+
+    </form>
+  </div>
 
 </div>
 

@@ -23,8 +23,8 @@ const Bookshelf = require('./models/bookshelf');
 
 mongoose
 //next line has to be changed when deploy on heroku -> MONGODB_URI in env file + anstatt local URL + auf heroku alles was im env file ist eintragen und config vars
-  .connect (`mongodb: ${process.env.MONGODB_URI}` , {
-//  .connect('mongodb://localhost/my-manga-library', {
+  .connect (`mongodb:${process.env.MONGODB_URI}` , { //works onheroku
+  //  .connect('mongodb://localhost/my-manga-library', {
     useNewUrlParser: true
   })
   .then(x => {
@@ -163,7 +163,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Meine Manga Bibliothek';
+app.locals.title = 'Mein Manga Regal';
 
 
 

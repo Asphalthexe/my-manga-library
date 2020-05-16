@@ -1,31 +1,35 @@
-<ul>
-  <li><a href="/search"> Suche ein Buch </a></li>
-  <li><a href="/userlibrary"> Mein Regal </a></li>
-</ul>
-
-<h1> Hallo {{req.user.id}}! Das ist dein Regal: </h1>
+<div id="searchdiv">
+  <h3> Hallo {{req.user.id}}! Das ist dein Regal: </h3>
 
 
+  <form action="/search" method="get">
+    <input type="text" name="search" id="searchinput" placeholder="Füge einen weiteren Titel deinem Regal hinzu">
+    <button type="submit" class="button1">Suche</button><br>
+    <div class="small"> (Es werden maximal 40 Ergebnisse angezeigt)</div>
+  </form>
+</div>
 
-<form action="/search" method="get">
-  <input type="text" name="search">
-  <button type="submit">Suche</button>
-</form>
 
-<div></div>
 {{#each books}}
+<div id="book-container">
 
-<div> <img src="{{this.imageLink}}" alt="cover" srcset=""></div>
-<div>
+  <div id="coverimg">
+    <img src="{{this.imageLink}}" alt="cover" srcset="">
+  </div>
 
-  <p>
+  <div>
     <h4>{{this.title}}</h4><br>
-    Zeichner / Autor:{{#each this.authors}} {{this}} {{/each}} <br>
+    Zeichner / Autor:{{#each this.authors}} {{this }} {{/each}} <br>
     Verlag und Erscheinungsdatum: {{ this.publisher }}{{ this.publisherDate }} <br>
     Seitenzahl: {{ this.pageCount }} Preis: {{ this.retailPrice }} ISBN: {{this.ISBN}}<br>
-  </p>
-  <p>Inhaltsbeschreibung: {{ this.description }}</p>
-</div>
+    <p>Inhaltsbeschreibung: {{ this.description }}</p>
 
-{{/each}}
+    <form action="userlibrary/delete/{{this.id}}" method="post">
+      <br><br>
+      <button type="submit" class="button2">Aus meinem Regal nehmen</button>
+
+    </form>
+  </div>
+
 </div>
+{{/each}}
