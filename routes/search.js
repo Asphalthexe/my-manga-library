@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
     //axios.get(`https://www.googleapis.com/auth/books/v1/volumes?q=${req.query.search}+intitle:${req.query.search}&key=${process.env.API_KEY}`).then(response => {
     //https://www.google.de/search?hl=de&tbo=p&tbm=bks&q=inauthor:%22Tsugumi+%C5%8Cba%22&source=gbs_metadata_r&cad=4
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=intitle:${req.query.search}&langRestrict=de&printType=books&maxResults=40&key=${process.env.API_KEY}`).then(response => {
-      console.log("response======>", response.data.items)
+      console.log("response======>", response.data.items.volumeInfo)
       res.render('private/search.hbs', {
         data: response.data.items
       });
