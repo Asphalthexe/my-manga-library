@@ -17,6 +17,7 @@ Suche nach ISBN:   <input type="text" name="searchisbn"> --}}
 </div>
 
 
+
 {{#each data}}
 
 <div id="book-container">
@@ -26,9 +27,9 @@ Suche nach ISBN:   <input type="text" name="searchisbn"> --}}
 
   <div>
     <h4>{{this.volumeInfo.title}} </h4><br>
-    Zeichner / Autor: {{#each this.volumeInfo.authors}} {{this.authors}} {{/each}} <br>
-    Categories: {{#each this.volumeInfo.mainCategory}} {{this.categories}} {{/each}} <br>
-    ISBN: {{#each this.volumeInfo.industryIdentifiers.type}} {{this.industryIdentifiers}} {{/each}} <br>
+    Zeichner / Autor: {{#each this.volumeInfo.authors}} {{this}} {{/each}} <br>
+    Categories: {{#each this.volumeInfo.categories}} {{this}} {{/each}} <br>
+    ISBN: {{#each this.volumeInfo.industryIdentifiers}} {{this.type}} {{/each}} <br>
 
 
     <form action="/search" method="post">
@@ -38,7 +39,7 @@ Suche nach ISBN:   <input type="text" name="searchisbn"> --}}
       <input hidden type="text" name="publisher" value="{{this.volumeInfo.publisher}}">
       <input hidden type="text" name="publisherDate" value="{{this.volumeInfo.publisherDate}}">
       {{!--     <input hidden type="text" name="categories" value="{{this.volumeInfo.categories}}"> --}}
-      <input hidden type="text" name="categories" value="{{this.volumeInfo.mainCategory}}">
+      <input hidden type="text" name="categories" value="{{this.volumeInfo.categories}}">
       <input hidden type="text" name="ISBN" value="{{this.volumeInfo.industryIdentifiers.type}}">
       <input hidden type="text" name="pageCount" value="{{this.volumeInfo.pageCount}}">
       <input hidden type="text" name="retailPrice"

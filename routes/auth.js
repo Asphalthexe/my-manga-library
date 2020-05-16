@@ -125,6 +125,7 @@ router.post('/auth/login', passport.authenticate('local', {
 //////////////// SLACK login ////////////////////////////////
 
 router.get("/auth/slack", passport.authenticate("slack"));
+
 router.get(
   "/auth/slack/callback",
   passport.authenticate("slack", {

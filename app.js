@@ -107,7 +107,8 @@ passport.use(
 // Slack Strategy
 passport.use(new SlackStrategy({
   clientID: process.env.SLACK_ID,
-  clientSecret: process.env.SLACK_SECRET
+  clientSecret: process.env.SLACK_SECRET,
+  callbackURL: process.env.SLACK_REDIRECT,
 }, (accessToken, refreshToken, profile, done) => {
 
   console.log("Slack Account Details:", profile);
